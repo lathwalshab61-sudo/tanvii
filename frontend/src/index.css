@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #0f141c;
+    color: #dee2ee;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* Custom telemetry HUD scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090e16;
+}
+::-webkit-scrollbar-thumb {
+  background: #252a33;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00d2ff;
+}
+
+/* Reticle & Glowing Utility animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
+  }
+}
+
+.hud-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.hud-panel {
+  background: rgba(22, 29, 41, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid #222f3e;
+}
+
+.hud-panel:hover {
+  border-color: rgba(0, 210, 255, 0.4);
+}
+
